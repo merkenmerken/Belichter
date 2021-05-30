@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "femtoos_core.h": "c",
+        "*.asm": "c"
+    },
+    "python.pythonPath": "C:\\Python\\Python39\\python.exe"
+}

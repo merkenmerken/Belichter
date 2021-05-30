@@ -1,0 +1,19 @@
+Import(['env'])
+
+
+OsSources = [
+    'femtoos_source/femtoos_app.c',
+    'femtoos_source/femtoos_core.c',
+    'femtoos_source/femtoos_port.c',
+    'femtoos_source/femtoos_shared.c',
+    'femtoos_source/femtoos_startup.s'
+]
+
+env.Append(CPPPATH = '#src/OS/femtoos_headers')
+env.Append(CPPPATH = '#src/OS/femtoos_devices')
+
+obj = env.Object(OsSources)
+
+Export('OsSources')
+
+Return('obj')

@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "AVR",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                // "_DEBUG",
+                // "UNICODE",
+                // "_UNICODE",
+                "__ATmega8__",
+                "__AVR_ATmega8__",
+                "F_CPU=8000000UL"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "C:/Program Files (x86)/Atmel/Studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/avr-gcc.exe",
+            "cStandard": "c99",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64",
+            "compilerArgs": [
+                "-mmcu=atmega8"
+            ]
+        }
+    ],
+    "version": 4
+}

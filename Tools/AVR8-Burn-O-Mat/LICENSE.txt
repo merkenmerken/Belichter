@@ -1,0 +1,21 @@
+Since the program did not run anymore under Java 9, I (Stefan Frings) recompiled it
+with JDK 8 and published it on my Homepage (www.stefanfrings.de).
+
+The program has been made by
+
+Torsten Brischalle
+Martin-Planer-Str. 12
+09599 Freiberg
+
+E-Mail: torsten@brischalle.de
+http://avr8-burn-o-mat.aaabbb.de/
+
+Original license text:
+
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+
+Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
+
+Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, siehe http://www.gnu.org/licenses/gpl-3.0.html
+
+Trotz sorgfältiger Programmierung kann ich nicht garantieren, dass das Programm frei von Fehlern ist, dass es das macht was Ihr erwartet oder das es überhaupt für irgendetwas sinnvolles eingesetzt werden kann. Ich schließe hiermit die Haftung für Schäden und Folgeschäden durch die direkte oder indirekte Nutzung des Programms, wie z.B. Datenverlust, entgangener Gewinn, Betriebsunterbrechung, Schäden an anderer Software, ausdrücklich aus. Wer damit nicht einverstanden ist, darf dieses Programm nicht benutzen.

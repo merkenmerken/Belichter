@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"femtoos_core.h": "c",
+			"*.asm": "c"
+		}
+	}
+}

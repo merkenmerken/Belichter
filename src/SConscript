@@ -1,0 +1,49 @@
+Import(['env'])
+
+objs = []
+
+
+objs = SConscript(  'OS/SConscript',
+                    duplicate = 0,
+                    exports = ['env']
+                 )
+
+srcSources = [
+    'commonIO\commonIO.c',
+    'code_TestBare.c'
+]
+
+
+env.Append(CPPPATH = '#src/commonIO')
+
+o = env.Object(srcSources)
+
+objs.append(o)
+
+
+# for debugging
+
+# print(env.Dump('CCFLAGS'))
+# print(env.Dump('CPPPATH'))
+# print(env.Dump('LINKFLAGS'))
+# print(env.Dump('ASFLAGS'))
+# print(env.Dump('ASPPCOM'))
+# print(env.Dump())
+# print(env.Dump('toolpath'))
+# print(env.Dump('PROG'))
+
+
+target_name ='${TARGETNAME}'
+TARGET_ELF = target_name + '.elf'
+TARGET_HEX = target_name + '.hex'
+
+env.Program(TARGET_ELF, objs)
+# # Create hex binary file.
+env.Hex(TARGET_HEX, TARGET_ELF)
+# # Compute memory usage.
+env.Size(None, TARGET_ELF)
+
+if (env['PROG'] == 1):
+    path = env['BUILDDIR'] + '/' + TARGET_HEX
+    env.Flash(path)
+

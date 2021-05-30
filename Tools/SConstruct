@@ -1,0 +1,135 @@
+# Set environment for AVR-GCC.
+
+#Define target name.
+targetName = 'Belichter'
+
+# Microcontroller type.
+mcu = 'atmega8'
+
+# Microcontroller frequency.
+CPU_FREQUENCY = '8000000UL' # Hz
+
+# Compiler optimization.
+# Possible value: 0 . . . s, g, 
+opt = "s"
+
+#Tool path
+Tool_AVR_GCC = ['C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\bin']
+BuilderPath = ['Tools']
+
+ToolPath = Tool_AVR_GCC + BuilderPath
+
+#local include files
+localIncludes = [   '"."',
+                    '"include"']
+
+#Sources on script level
+localSource = [ 'code_TestBare.c'
+                ]
+
+SConscript(['OS/OSSConscript.sco','src/SrcSConscript.sco'])
+Import('OsSources','OsCPPPath')
+Import('srcSources','srcCPPPath')
+
+#All Sources
+allSources = localSource + OsSources + srcSources
+allIncludes = localIncludes + OsCPPPath + srcCPPPath
+
+#Create Devault Environment for AVR_GCC
+# toolpath=['tools']
+env = Environment(tools = [ 
+    'gnulink','gcc','g++','gas','ar',
+    'avr'] ,
+                            ENV = {'PATH' : ToolPath},
+                            toolpath=['tools'])
+
+env['CC'] = 'avr-gcc'
+env['CXX'] = 'avr-g++'
+env['AS'] = 'avr-gcc'
+env['CPPPATH'] = allIncludes
+# env['CPPPATH'] = ["C:\\Program Files (x86)\\Atmel\Studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\include"]
+env['OBJCOPY'] = 'avr-objcopy'
+env['SIZE'] = 'avr-size'
+# env['PROGSUFFIX'] = '.elf'
+
+env.Append(BUILDERS = {
+    # 'Elf': _get_elf_builder(),
+    'Hex': Builder(action = "$OBJCOPY -O ihex -R .eeprom $SOURCES $TARGET"),
+    'Size': Builder(action = "$SIZE -C --mcu={} $SOURCE".format(mcu)),
+})
+
+ccompilerFlags = [  '-mmcu='+ mcu,
+                    '-O'+opt,
+                    '-Wall',
+                    # '-Werror',
+                    '-std=gnu99',
+                    '-ffunction-sections',
+                    '-fdata-sections',
+                    '-fpack-struct',
+                    '-fshort-enums',
+                    '-g2',
+                    '-x','c',
+                    '-funsigned-char', 
+                    '-funsigned-bitfields',
+                    '-c'
+                    # ,
+                    # '-B', 'C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\Packs\\atmel\\ATmega_DFP\\1.6.364\\gcc\\dev\\atmega8'
+                    ]
+
+clinkerFlags = [    '-mmcu='+ mcu,
+                    '-Wl,-Map="${targetName}.map"', 
+                    '-Wl,--start-group' ,
+                    '-Wl,-lm' ,
+                    '-Wl,--end-group' ,
+                    '-Wl,--gc-sections' 
+                    # ,
+                    # '-B', 'C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\Packs\\atmel\\ATmega_DFP\\1.6.364\\gcc\\dev\\atmega8'
+                    ]
+# normally "ASPATH" will derived from CPPPATH but because of something it will not be done automatically
+assemblerPath = ['-I'+ element for element in allIncludes]
+
+assemblerFlags = [  '-mmcu='+ mcu,
+                    '-x','assembler-with-cpp',
+                    '-c', 
+                    assemblerPath
+                    # ,
+                    # '-B', 'C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\Packs\\atmel\\ATmega_DFP\\1.6.364\\gcc\\dev\\atmega8',
+                    ]
+
+
+
+customDefines = [   'F_CPU=' + CPU_FREQUENCY
+                ]
+
+
+# Set environment for an Atmel AVR Atmega 328p microcontroller.
+# Create and initialize the environment.
+env.Append(CCFLAGS = ccompilerFlags)
+env.Append(LINKFLAGS = clinkerFlags)
+env.Append(ASFLAGS = assemblerFlags)
+env.Append(CPPDEFINES = customDefines)
+
+# for debugging
+
+# print(env.Dump('CCFLAGS'))
+# print(env.Dump('CPPPATH'))
+# print(env.Dump('LINKFLAGS'))
+# print(env.Dump('ASFLAGS'))
+# print(env.Dump('ASPPCOM'))
+print(env.Dump())
+# print(env.Dump('toolpath'))
+
+
+
+TARGET = targetName
+SOURCE = allSources
+
+# env.Program(TARGET  + '.elf', SOURCE)
+# # Create hex binary file.
+# env.Hex(TARGET  + '.hex', TARGET  + '.elf')
+# # Compute memory usage.
+# env.Size(None, TARGET  + '.elf')
+
+
+
+
