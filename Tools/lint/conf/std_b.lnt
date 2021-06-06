@@ -1,0 +1,8 @@
+//  Gnu C/C++ (version 2.95.3 or later), -si2 -spN2 -spF4, 
+//  Standard lint options
+
+
+co-gcc.lnt
+
+options.lnt  -si2 -spN2 -spF4
+

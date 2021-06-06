@@ -1,0 +1,24 @@
+Import(['env'])
+
+
+src = [     
+
+    
+]
+
+srcLinted = [
+    'LightSystem.c',
+    'LightSystemConfig.c'
+]
+
+include = [
+    '#src/LightSystem'
+]
+
+env.Append(CPPPATH = include)
+
+obj = env.Object(src)
+env.Append(OBJECTS_BUILT = obj)
+
+objLint = env.Object(srcLinted)
+env.Append(OBJECTS_LINT_BUILT = objLint)

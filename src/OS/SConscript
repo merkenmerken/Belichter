@@ -1,19 +1,33 @@
 Import(['env'])
 
 
-OsSources = [
-    'femtoos_source/femtoos_app.c',
-    'femtoos_source/femtoos_core.c',
-    'femtoos_source/femtoos_port.c',
-    'femtoos_source/femtoos_shared.c',
-    'femtoos_source/femtoos_startup.s'
+src = [
+    "FreeRtos/timers.c",
+    'FreeRtos/tasks.c',
+    'FreeRtos/stream_buffer.c',
+    'FreeRtos/queue.c',
+    'main.c',
+    'FreeRtos/list.c',
+    'FreeRtos/event_groups.c',
+    'FreeRtos/croutine.c',
+    'FreeRtos/port/heap_1.c',
+    'FreeRtos/port/port.c'
 ]
 
-env.Append(CPPPATH = '#src/OS/femtoos_headers')
-env.Append(CPPPATH = '#src/OS/femtoos_devices')
+srcLinted = [
+]
 
-obj = env.Object(OsSources)
+include = [  '#src/OS',
+            '#src/OS/FreeRtos',
+            '#src/OS/FreeRtos/port',
+            '#src/OS/FreeRtos/include'
+]
 
-Export('OsSources')
+env.Append(CPPPATH = include)
 
-Return('obj')
+
+obj = env.Object(src)
+env.Append(OBJECTS_BUILT = obj)
+
+objLint = env.Object(srcLinted)
+env.Append(OBJECTS_LINT_BUILT = objLint)

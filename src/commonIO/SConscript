@@ -1,0 +1,22 @@
+Import(['env'])
+
+
+src = [
+    
+]
+
+srcLinted = [
+    'commonIO.c'
+]
+
+include = [
+    '#src/commonIO'
+]
+
+env.Append(CPPPATH = include)
+
+obj = env.Object(src)
+env.Append(OBJECTS_BUILT = obj)
+
+objLint = env.Object(srcLinted)
+env.Append(OBJECTS_LINT_BUILT = objLint)

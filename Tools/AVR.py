@@ -10,7 +10,7 @@ objcopy  = 'avr-objcopy'
 def generate(env):
     """Add Builders and construction variables for gcc to an Environment."""
 
-    gnu_tools = ['gcc','g++','asm','gnulink','ar',]
+    gnu_tools = ['Lint','gcc','g++','asm','gnulink','ar',]
 	# for tool in gnu_tools:
 	# 	env.Tool(tool)
 

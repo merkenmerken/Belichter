@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "femtoos_core.h": "c",
-        "*.asm": "c"
+        "*.asm": "c",
+        "lightsystem.h": "c"
     },
     "python.pythonPath": "C:\\Python\\Python39\\python.exe"
 }

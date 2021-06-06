@@ -1,24 +1,36 @@
 Import(['env'])
 
-objs = []
 
 
-objs = SConscript(  'OS/SConscript',
+
+SConscript(  [  'OS/SConscript',
+                'Anzeige/SConscript',
+                'LightSystem/SConscript',
+                'commonIO/SConscript',
+                'UART/SConscript'],
                     duplicate = 0,
                     exports = ['env']
                  )
 
-srcSources = [
-    'commonIO\commonIO.c',
-    'code_TestBare.c'
+
+src = [
+
 ]
 
 
-env.Append(CPPPATH = '#src/commonIO')
+# env.Append(CPPPATH = '#src/TimeKeeper')
 
-o = env.Object(srcSources)
+localObjects = env.Object(src)
 
-objs.append(o)
+objs = []
+
+objs.append(env['OBJECTS_BUILT'])
+objs.append(env['OBJECTS_LINT_BUILT'])
+objs.append(localObjects)
+
+AddPreAction(env['OBJECTS_LINT_BUILT'],env["LINTCOM"])
+
+
 
 
 # for debugging
@@ -45,5 +57,6 @@ env.Size(None, TARGET_ELF)
 
 if (env['PROG'] == 1):
     path = env['BUILDDIR'] + '/' + TARGET_HEX
+    # path = TARGET_HEX
     env.Flash(path)
 

@@ -1,5 +1,7 @@
 # Set environment for AVR-GCC.
 
+# import sys
+
 AddOption(
 '--programm',
 dest='prog',
@@ -12,7 +14,9 @@ help='programm after build',
 )
 
 #Tool path
-Tool_AVR_GCC = ['C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\bin' , 'tools/avrdude-6.3-mingw32']
+Tool_AVR_GCC = ['C:\\Program Files (x86)\\Atmel\\Studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\bin' , 'tools/avrdude-6.3-mingw32',
+                'C:\\Python\\Python39\\Lib\\site-packages',
+                'tools/lint']
 
 # Variables
 vars = Variables('variables.py')
@@ -83,6 +87,11 @@ env.Append(ASFLAGS = assemblerFlags)
 env.Append(CPPDEFINES = customDefines)
 
 BuildDir = '#' + '${BuildDir}'
+
+
+env['OBJECTS_BUILT'] = []
+env['OBJECTS_LINT_BUILT'] = []
+
 
 SConscript('src/SConscript',
         variant_dir = env['BUILDDIR'],

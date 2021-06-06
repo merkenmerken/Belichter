@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "BuildAndProgram",
+            "command": "scons",
+            "args": [
+                "-Q",
+                "--programm=1"
+            ],
+            
+            "problemMatcher": [],
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build",
+            "command": "scons",
+            "args": [
+                "-Q"
+            ],
+            "type": "shell",
+            "group": "test",
+
+            "problemMatcher": [],
+        },
+        {
+            "label": "Clean",
+            "command": "scons",
+            "args": [
+                "-c"
+            ],
+            "type": "shell",
+            "group": "test",
+            "problemMatcher": [],
+        }
+    ]
+  }

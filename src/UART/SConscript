@@ -1,0 +1,21 @@
+Import(['env'])
+
+src = [     
+    'uart.c',    
+]
+
+srcLinted = [
+    'uart_custom.c'
+]
+
+include = [  
+    '#src/UART'
+]
+
+env.Append(CPPPATH = include)
+
+obj = env.Object(src)
+env.Append(OBJECTS_BUILT = obj)
+
+objLint = env.Object(srcLinted)
+env.Append(OBJECTS_LINT_BUILT = objLint)

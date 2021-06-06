@@ -122,13 +122,14 @@ void appLoop_LEDtask0(void)
       
       // uart_putc('A'+test);
 
-      uint8_t ar[3] = "te";
+      // uint8_t ar[6] = "testme";
 
-      for (uint8_t i = 0; i < 2; i++)
-      {
-        uart_putc((uint8_t)ar[i]);
-        taskDelayFromNow(1);
-      }
+      // for (uint8_t i = 0; i < 5; i++)
+      // {
+        UART_String_TX("teststring");
+            UART_String_TX("\n");
+
+      // }
       
       
     }
