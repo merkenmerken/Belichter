@@ -12,13 +12,19 @@
 #pragma once
 #include <avr/io.h>
 #include <stdbool.h>
+#include "LightSystemConfig.h"
 // #include "FreeRTOS.h"
 // #include "task.h"
 // #include "queue.h"
 
-void Anzeige_cyclic(void *pvParameters);
+void Lightsystem_cyclic(void *pvParameters);
 
-void Anzeige_mult(void *pvParameters);
+void Lightsystem_mult(void *pvParameters);
+
+void Lightsystem_getActiveBtnNum(tBTN* vButton);
+
+
+
 
 
 

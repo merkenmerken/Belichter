@@ -1,0 +1,26 @@
+Import(['env'])
+
+
+src = [
+]
+
+srcLinted = [
+    'adc.c',
+]
+
+include = [
+    '#src/adc'
+]
+
+env.Append(CPPPATH = include)
+
+
+obj = env.Object(src)
+env.Append(OBJECTS_BUILT = obj)
+
+objLint = env.Object(srcLinted)
+env.Append(OBJECTS_LINT_BUILT = objLint)
+
+
+
+

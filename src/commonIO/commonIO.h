@@ -11,6 +11,7 @@
 
 #define COMMONIO_MAX_PINS 24
 
+
 typedef enum{
     PIN_B0,
     PIN_B1,
@@ -103,8 +104,8 @@ void commonIO_togglePin(COMMONIO_PIN vPin);
 /**
  * @brief Set or clear pin number of type COMMONIO_PIN to instantly
  * 
- * @param vPin 
- * @param vLevel 
+ * @param vPin Pin number
+ * @param vLevel High or Low
  */
 void commonIO_setPinLevel(COMMONIO_PIN vPin, COMMONIO_LEVEL vLevel);
 
@@ -121,5 +122,7 @@ void commonIO_setDir(COMMONIO_PIN vPin ,COMMONIO_DIR vDir);
  * 
  */
 void commonIO_init(void);
+
+
 
 #endif

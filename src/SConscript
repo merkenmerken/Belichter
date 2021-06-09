@@ -7,7 +7,8 @@ SConscript(  [  'OS/SConscript',
                 'Anzeige/SConscript',
                 'LightSystem/SConscript',
                 'commonIO/SConscript',
-                'UART/SConscript'],
+                'UART/SConscript',
+                'adc/SConscript'],
                     duplicate = 0,
                     exports = ['env']
                  )

@@ -58,11 +58,4 @@ void Anzeige_off();
 
 
 
-void Anzeige_cyclic(void *pvParameters);
-
-void Anzeige_mult(void *pvParameters);
-
-
-
-
 #endif /* ANZEIGE_H_ */

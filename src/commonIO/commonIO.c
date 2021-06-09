@@ -2,28 +2,13 @@
 #include "uart_custom.h"
 
 
-/* Port D */
-#define PIND_ADDRESS (((0x10)+0x00)+0x20)
-#define DDRD_ADDRESS (((0x11)+0x00)+0x20)
-#define PORTD_ADDRESS (((0x12)+0x00)+0x20)
-
-/* Port C */
-#define PINC_ADDRESS (((0x13)+0x00)+0x20)
-#define DDRC_ADDRESS (((0x14)+0x00)+0x20)
-#define PORTC_ADDRESS (((0x15)+0x00)+0x20)
-
-/* Port B */
-#define PINB_ADDRESS (((0x16)+0x00)+0x20)
-#define DDRB_ADDRESS (((0x17)+0x00)+0x20)
-#define PORTB_ADDRESS (((0x18)+0x00)+0x20)
-
 
 /**
  * @brief Specifies the pin number and the direction of the pin
  * 
  */
 const PinConfiguration PIN_DefaultConfig[COMMONIO_MAX_PINS] = {
-    {   PIN0,  PinInput},           /* PINB0 */
+    {   PIN0,  PinDontCare},           /* PINB0 */
     {   PIN1,  PinOutput},          /* PINB1 */
     {   PIN2,  PinDontCare},        /* PINB2 */
     {   PIN3,  PinDontCare},        /* PINB3 */
@@ -37,7 +22,7 @@ const PinConfiguration PIN_DefaultConfig[COMMONIO_MAX_PINS] = {
     {   PIN2,  PinOutput},          /* PINC2 */
     {   PIN3,  PinOutput},          /* PINC3 */
     {   PIN4,  PinInput},           /* PINC4 */
-    {   PIN5,  PinInput},           /* PINC5 */
+    {   PIN5,  PinDontCare},           /* PINC5 */
     {   PIN6,  PinDontCare},        /* PINC6 */
     {   PIN7,  PinDontCare},        /* PINC7 */
 
@@ -48,7 +33,7 @@ const PinConfiguration PIN_DefaultConfig[COMMONIO_MAX_PINS] = {
     {   PIN4,  PinOutput},          /* PIND4 */
     {   PIN5,  PinOutput},          /* PIND5 */
     {   PIN6,  PinOutput},          /* PIND6 */
-    {   PIN7,  PinInput}            /* PIND7 */
+    {   PIN7,  PinDontCare}            /* PIND7 */
 };
 
 /**
@@ -276,6 +261,8 @@ void commonIO_setDir(COMMONIO_PIN vPin ,COMMONIO_DIR vDir){
 
 
 
+
+
 void commonIO_init(void){
 
     DDRB = 0;
@@ -287,34 +274,8 @@ void commonIO_init(void){
 
     for(uint8_t reg = 0; reg < COMMONIO_MAX_PINS; reg++){
         commonIO_setDir(reg, PIN_DefaultConfig[reg].vDir);
-    }
-
-    uart0_putc(PORTB);
-    uart0_putLF();
-    uart0_putc(PORTC);
-    uart0_putLF();
-    uart0_putc(PORTD);
-    uart0_putLF();
-    uart0_putc(DDRB);
-    uart0_putLF();
-    uart0_putc(DDRC);
-    uart0_putLF();
-    uart0_putc(DDRD);
-    uart0_putLF();
-    uart0_putc(PINB);
-    uart0_putLF();
-    uart0_putc(PINC);
-    uart0_putLF();
-    uart0_putc(PIND);
-    uart0_putLF();
-
-    ADMUX = (0<<REFS1) | (0<<REFS0) | (0<<ADLAR) | (0<<MUX3) | (1<<MUX2) | (0<<MUX1) | (0<<MUX0); 
-    ADCSRA = (1<<ADEN) | (1<<ADSC) | (1<<ADFR) | (1<<ADIF) | (0<<ADIE) | (0<<ADPS2) | (1<<ADPS1) | (1<<ADPS0);
-
-
+    } 
 }
-
-
 
 
 
