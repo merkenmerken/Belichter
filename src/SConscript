@@ -8,7 +8,9 @@ SConscript(  [  'OS/SConscript',
                 'LightSystem/SConscript',
                 'commonIO/SConscript',
                 'UART/SConscript',
-                'adc/SConscript'],
+                'adc/SConscript',
+                'FiniteStateMachine/SConscript',
+                'libs/SConscript'],
                     duplicate = 0,
                     exports = ['env']
                  )

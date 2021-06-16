@@ -5,7 +5,7 @@
 #define atmega8
 #endif
 
-#include "avr/io.h"
+#include "Std_Types.h"
 
 #define DEBUG_COMMON_IO 1
 

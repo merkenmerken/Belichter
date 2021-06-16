@@ -68,7 +68,7 @@ were adapted from the Arduino HardwareSerial.h library by Tim Sharpe on
 
 /**@{*/
 #include <stdint.h>
-#include <avr/io.h>
+#include "Std_Types.h"
 
 #if (__GNUC__ * 100 + __GNUC_MINOR__) < 304
 #error "This library requires AVR-GCC 3.4 or later, update to newer AVR-GCC compiler !"

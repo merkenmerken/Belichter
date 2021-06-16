@@ -10,7 +10,7 @@
 #define LIGHTSYSTEM_H_
 
 #pragma once
-#include <avr/io.h>
+#include "Std_Types.h"
 #include <stdbool.h>
 #include "LightSystemConfig.h"
 // #include "FreeRTOS.h"
@@ -19,13 +19,8 @@
 
 void Lightsystem_cyclic(void *pvParameters);
 
-void Lightsystem_mult(void *pvParameters);
+void Lightsystem_multCyclic(void *pvParameters);
 
 void Lightsystem_getActiveBtnNum(tBTN* vButton);
-
-
-
-
-
 
 #endif /* TIMEKEEPER_H_ */

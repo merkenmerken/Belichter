@@ -10,7 +10,7 @@
 #ifndef ANZEIGECONFIG_H_
 #define ANZEIGECONFIG_H_
 
-#include <avr/io.h>
+#include "Std_Types.h"
 #include "commonIO.h"
 
 #define MAX_SEG_NUMBERS 17U

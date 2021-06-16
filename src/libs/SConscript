@@ -1,19 +1,15 @@
 Import(['env'])
 
 
-src = [     
-    'LightSystem.c',
+src = [
     
 ]
 
 srcLinted = [
-    
-    'LightSystemConfig.c',
-    'CDD_Lightsystem_Fsm.c'
 ]
 
 include = [
-    '#src/LightSystem'
+    '#src/libs',
 ]
 
 env.Append(CPPPATH = include)

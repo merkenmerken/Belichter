@@ -29,7 +29,7 @@
 #define FREERTOS_CONFIG_H
 
 //#include <iom323.h>
-#include <avr/io.h>
+#include "Std_Types.h"
 
 #define configCALL_STACK_SIZE	20
 
@@ -51,8 +51,8 @@
 #define configCPU_CLOCK_HZ			( ( unsigned long ) 8000000 )
 #define configTICK_RATE_HZ			( ( TickType_t ) 1000 )
 #define configMAX_PRIORITIES		( 3 )
-#define configMINIMAL_STACK_SIZE	( ( unsigned short ) 95 )
-#define configTOTAL_HEAP_SIZE		( (size_t ) ( 450 ) )
+#define configMINIMAL_STACK_SIZE	( ( unsigned short ) 80 )
+#define configTOTAL_HEAP_SIZE		( (size_t ) ( 400 ) )
 #define configMAX_TASK_NAME_LEN		( 8 )
 #define configUSE_TRACE_FACILITY	0
 #define configUSE_16_BIT_TICKS		1

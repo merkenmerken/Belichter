@@ -1,7 +1,7 @@
 #ifndef ADC_H
 #define ADC_H
 
-#include "avr/io.h"
+#include "Std_Types.h"
 
 #define ADC_BUFFER_MAX_CIRCULAR_VALUES 5U
 #define ADC_BUFFER_MAX_DEVIATION 5U

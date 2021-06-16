@@ -17,3 +17,8 @@ const uint8_t vBtnThreshold[BTN_MAX] = {
     214,        //BTN_6
     255         //BTN_MAX_VALUE
 };
+
+const uint8_t vCountUnit[2] ={
+    1U,
+    10U
+};

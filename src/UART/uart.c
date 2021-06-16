@@ -73,7 +73,7 @@ Date        Description
 			the "ISR" format introduced in AVR-Libc v1.4.0.
 ************************************************************************/
 
-#include <avr/io.h>
+#include "Std_Types.h"
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
 #include <util/atomic.h>

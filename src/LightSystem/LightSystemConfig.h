@@ -7,7 +7,13 @@
 #ifndef LIGHTSYSTEMCONFIG_H_
 #define LIGHTSYSTEMCONFIG_H_
 
-#include <avr/io.h>
+#include "Std_Types.h"
+
+#define LIGHTSYSTEM_TICK_RATE 10U
+#define LIGHTSYSTEM_SEC_TO_TICKS(sec) (sec*1000UL/10UL)
+#define LIGHTSYSTEM_100MS_TO_TICKS (100UL/10UL)
+#define LIGHTSYSTEM_STATE_NEXT_MULT (LIGHTSYSTEM_SEC_TO_TICKS(1U))
+#define LIGHTSYSTEM_STATE_NEXT_MULT_PHASE2 (LIGHTSYSTEM_SEC_TO_TICKS(6U))
 
 typedef enum{
     BTN_off,
@@ -21,25 +27,25 @@ typedef enum{
     BTN_MAX
 }tBTN;
 
+typedef struct{
+    uint16_t vLastSetTime;
+    uint16_t vCurrentTimer;
+    uint8_t vActiveBtn;
+}tTimeKeeper;
 
 typedef enum{
-    LS_entry,
-    LS_idle,
-    LS_active,
-    LS_up,
-    LS_up2,
-    LS_down,
-    LS_down2,
-    LS_save1,
-    LS_save1_2,
-    LS_save2,
-    LS_save2_2,
-    LS_save3,
-    LS_save3_2
-} tStates;
+    EeprLastSetTime,
+    EeprSave1,
+    EeprSave2,
+    EeprSave3,
+    EeprMaxSavedValues
+}tSaveSpot;
+
 
 
 const uint8_t vBtnThreshold[BTN_MAX];
+
+const uint8_t vCountUnit[2];
 
 
 
